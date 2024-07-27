@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('descripcion');
             $table->decimal('precio');
             $table->text('subtitulo');
+            $table->boolean('is_visible')->default(true);
             $table->timestamps();
             $table->string('imagen1')->nullable();
             $table->string('imagen2')->nullable();
