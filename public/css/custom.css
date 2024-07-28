@@ -114,3 +114,10 @@ font-size: 30px;
     font-weight: 700;
     font-size: 30px;
 }
+
+.card-img-{
+    width:304px;
+    height:304px;
+    object-fit: contain;
+
+}

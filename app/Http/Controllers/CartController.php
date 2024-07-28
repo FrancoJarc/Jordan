@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\Users_Compra;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -45,7 +47,13 @@ class CartController extends Controller
     public function show()
     {
         $cart = session('cart', []);
-        return view('carrito.show', compact('cart'));
+        $total = 0;
+
+        foreach ($cart as $item) {
+            $total += $item['producto']->precio * $item['cantidad'];
+        }
+
+        return view('carrito.show', compact('cart', 'total'));
     }
 
     public function update(Request $request, $id)
@@ -65,17 +73,34 @@ class CartController extends Controller
         $cart = session('cart', []);
 
         if (isset($cart[$id])) {
-            unset($cart[$id]);
+            if ($cart[$id]['cantidad'] > 1) {
+                $cart[$id]['cantidad']--;
+            } else {
+                unset($cart[$id]);
+            }
+
             session(['cart' => $cart]);
         }
-
-        return redirect()->back()->with('message', 'Producto eliminado del carrito');
+        return redirect()->route('carrito.show')->with('message', 'Producto actualizado en el carrito');
     }
 
-    public function destroy()
+
+
+    public function comprar(Request $request)
     {
-        session()->forget('cart');
-        return redirect()->back()->with('message', 'Carrito vaciado');
+        $user = Auth::user();
+        $total = $request->input('total');
+        $cart = session('cart', []);
+
+        Users_Compra::create([
+            //falta crear el carrito
+            'user_id' => $user->id,
+            'total' => $total,
+        ]);
+
+        session::forget('cart');
+
+        return redirect()->route('carrito.show')->with('message', 'Compra realizada');
     }
 
 }

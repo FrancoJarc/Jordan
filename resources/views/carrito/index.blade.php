@@ -23,7 +23,7 @@
         @foreach ($productos as $producto)
         <div class="col-3">
             <div class="card">
-                <img src="{{ Storage::url($producto->imagen1) }}" alt="{{$producto->name }}" class="card-img-">
+                <img src="{{ Storage::url($producto->imagen1) }}" alt="{{$producto->name }}" class="card-img-" >
                 <div class="card-body text-center">
                     <h2 class="producto-name">{{$producto->name}}</h2>
                     <p class="producto-precio">${{$producto->precio}}</p>
