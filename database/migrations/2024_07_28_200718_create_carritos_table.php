@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('talles', function (Blueprint $table) {
+        Schema::create('carritos', function (Blueprint $table) {
             $table->id();
-            $table->integer("numero");
+            $table->foreignId('users_id')->constrained()->onDelete('cascade');
+            $table->string('estado');
             $table->timestamps();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('talles');
+        Schema::dropIfExists('carritos');
     }
 };

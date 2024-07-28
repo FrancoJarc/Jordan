@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Metodo_de_Pago;
+use App\Models\Productos_Carrito;
 use Illuminate\Http\Request;
 
-class MetodoDePagoController extends Controller
+class ProductosCarritoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class MetodoDePagoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Metodo_de_Pago $metodo_de_Pago)
+    public function show(Productos_Carrito $productos_Carrito)
     {
         //
     }
@@ -42,7 +42,7 @@ class MetodoDePagoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Metodo_de_Pago $metodo_de_Pago)
+    public function edit(Productos_Carrito $productos_Carrito)
     {
         //
     }
@@ -50,7 +50,7 @@ class MetodoDePagoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Metodo_de_Pago $metodo_de_Pago)
+    public function update(Request $request, Productos_Carrito $productos_Carrito)
     {
         //
     }
@@ -58,7 +58,7 @@ class MetodoDePagoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Metodo_de_Pago $metodo_de_Pago)
+    public function destroy(Productos_Carrito $productos_Carrito)
     {
         //
     }

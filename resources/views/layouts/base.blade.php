@@ -25,8 +25,8 @@
             </a>
         </div>
         <div class="nav-actions">
-            <a class="nav-link" href="#">
-                <i class="bi bi-cart fs-4 text-dark"></i>
+            <a class="nav-link" href="{{ route('carrito.show') }}">
+                <i class="bi bi-cart fs-4 text-dark"></i> Ver
             </a>
             <a class="nav-link boton" aria-current="page" href=" {{ route('register') }}">INICIAR SESION</a>
         </div>

@@ -6,7 +6,8 @@
 @section('autor', 'Jordan')
 
 @section('content')
-{{--
+
+
 <h1>Bienvenido a Jordan APP</h1>
 <p>Compra tus zapatillas favoritas aquí.</p>
 
@@ -48,36 +49,7 @@
 
 </tbody>
 @endforeach
-</table>--}}
-
-<h1 class="titulo-productos"> PRODUCTOS</h1>
-
-<div class="container">
-    <div class="row justify-content-center">
-        @foreach ($productos as $producto)
-        <div class="col-3">
-            <div class="card">
-                <img src="{{ Storage::url($producto->imagen1) }}" alt="{{$producto->name }}" class="card-img-">
-                <div class="card-body text-center">
-                    <h2 class="producto-name">{{$producto->name}}</h2>
-                    <p class="producto-precio">${{$producto->precio}}</p>
-                </div>
-            </div>
-            
-        </div>
-        @endforeach
-
-
-    </div>
-
-</div>
-
-
-
-
-
-
-
+</table>
 
 
 
