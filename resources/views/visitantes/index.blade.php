@@ -15,7 +15,7 @@
 </div>
 @endif
 
-<div class="container cont-carrito">
+<div class="container">
     <div class="row">
 
         @foreach ($productos as $producto)
@@ -26,13 +26,9 @@
                 <div class="jordan-card-body text-center">
                     <h2 class="jordan-producto-name">{{ $producto->name }}</h2>
                     <p class="jordan-producto-precio">${{ $producto->precio }}</p>
-                    <form action="{{ route('carrito.add') }}" method="POST" class="d-inline">
-                        @csrf
-                        <input type="hidden" name="producto_id" value="{{ $producto->id }}">
-                        <button type="submit" class="btn btn-dark">Agregar al Carrito</button>
-                    </form>
+                    <a href="{{ route('register') }}" class="btn btn-dark">Agregar al Carrito</a>
                 </div>
-                
+
             </div>
         </div>
         @endforeach

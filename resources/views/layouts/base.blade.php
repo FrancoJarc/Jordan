@@ -32,8 +32,8 @@
                 </a>
                 @endif
             @else
-                <a href="{{ route('home') }}">
-                    <img src="{{ Storage::url('public/imagenes/jordanlogo.png') }}" alt="Jordan Logo" width="50" height="50">
+                <a href="{{ route('visitantes.index') }}">
+                    <img src="{{ Storage::url('public/imagenes/jordanlogo.png') }}" alt="Jordan Logo" width="50" height="50" class="logo-visitante">
                 </a>
             @endif
             </div>

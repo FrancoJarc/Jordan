@@ -12,12 +12,17 @@
     flex: 1;
     display: flex;
     justify-content: center;
-    margin-left: 180px;
+    margin-left: 190px;
 }
 
 
+/*logo visitante*/
+.logo-visitante{
+    margin-left: 80px;
+}
+
 .jordan-img-vendedor{
-    margin-right: 150px;
+    margin-right: 70px;
 }
 
 .nav-actions {
@@ -54,7 +59,8 @@
     color: #fff;
     padding: 70px;
     text-align: center;
-    margin-top: auto
+    margin-top: auto;
+
 }
 
 .footer-icon {
@@ -177,6 +183,10 @@ h1.display-4 {
 
 /*Index carrito*/
 
+.cont-carrito{
+    margin-bottom: 50px;
+}
+
 
 
 .jordan-card {
@@ -237,3 +247,4 @@ h1.display-4 {
     gap: 1rem;
 
 }
+

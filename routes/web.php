@@ -5,7 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-
+use App\Http\Controllers\VisitanteController;
 
 Route::resource('/productos', ProductoController::class)->middleware('is_vendedor');
 
@@ -16,12 +16,16 @@ Route::get('/carrito/show', [CartController::class, 'show'])->name('carrito.show
 Route::delete('/carrito/remove/{id}', [CartController::class, 'remove'])->name('carrito.remove')->middleware('is_cliente');
 Route::post('/carrito/comprar', [CartController::class, 'comprar'])->name('carrito.comprar')->middleware('is_cliente');
 
+
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/', [VisitanteController::class, 'index'])->name('visitantes.index')->middleware('is_visitante');
+Route::get('/visitantes', [VisitanteController::class, 'index'])->name('visitantes.index')->middleware('is_visitante');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

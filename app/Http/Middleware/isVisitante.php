@@ -4,10 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
-class IsVendedor
+class isVisitante
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,14 @@ class IsVendedor
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->is_vendedor) {
-            return $next($request);
-        }else{
-            return redirect()->route('login');
+        if (Auth::check()) {
+            if (Auth::user()->is_vendedor) {
+                return redirect()->route('productos.index');
+            } else {
+                return redirect()->route('carrito.index');
+            }
         }
+
+        return $next($request);
     }
 }
