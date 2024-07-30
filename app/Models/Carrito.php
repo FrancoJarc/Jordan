@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Carrito extends Model
 {
     use HasFactory;
+
+    protected $table = 'carritos';
+
+    protected $fillable = [
+        'users_id',
+        'estado',
+    ];
 }

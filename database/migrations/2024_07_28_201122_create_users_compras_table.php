@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('carritos_id')->constrained()->onDelete('cascade');
             $table->foreignId('users_id')->constrained()->onDelete('cascade');
+            $table->double('total', 8, 2);
             $table->timestamps();
         });
     }

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Users_Compra;
+use App\Models\Carrito;
+use App\Models\Productos_Carrito;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -91,10 +93,25 @@ class CartController extends Controller
         $user = Auth::user();
         $total = $request->input('total');
         $cart = session('cart', []);
+        
+        $carrito = Carrito::create([
+            'users_id' => $user->id,
+            'estado' => "Completado",
+        ]);
+
+        $carritoId = $carrito->id;
+
+        foreach ($cart as $item) {
+            Productos_Carrito::create([
+                'productos_id' => $item['producto']->id,
+                'carritos_id' => $carritoId,
+                'cantidad' => $item['cantidad'],
+            ]);
+        }
 
         Users_Compra::create([
-            //falta crear el carrito
-            'user_id' => $user->id,
+            'carritos_id' => $carritoId,
+            'users_id' => $user->id,
             'total' => $total,
         ]);
 

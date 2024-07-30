@@ -12,8 +12,8 @@ class Users_Compra extends Model
     protected $table = 'users_compras'; 
 
     protected $fillable = [
-        'id_carrito',
-        'id_cliente',
+        'carritos_id',
+        'users_id',
         'total',
     ];
 }

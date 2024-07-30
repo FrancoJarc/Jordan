@@ -18,33 +18,43 @@
 
 <body>
 
+
     <nav class="navbar">
         <div class="nav-logo">
             @if(Auth::check())
                 @if(Auth::user()->is_vendedor)
                 <a href="{{ route('productos.index') }}">
-                    <img src="{{ Storage::url('public/imagenes/jordanlogo.png') }}" alt="Jordan Logo" width="50" height="50">
+                    <img class="jordan-img-vendedor" src="{{ Storage::url('public/imagenes/jordanlogo.png') }}" alt="Jordan Logo" width="50" height="50">
                 </a>
                 @else
                 <a href="{{ route('carrito.index') }}">
                     <img src="{{ Storage::url('public/imagenes/jordanlogo.png') }}" alt="Jordan Logo" width="50" height="50">
                 </a>
-            @endif
+                @endif
             @else
-            <a href="{{ route('home') }}">
-                <img src="{{ Storage::url('public/imagenes/jordanlogo.png') }}" alt="Jordan Logo" width="50" height="50">
-            </a>
+                <a href="{{ route('home') }}">
+                    <img src="{{ Storage::url('public/imagenes/jordanlogo.png') }}" alt="Jordan Logo" width="50" height="50">
+                </a>
             @endif
-        </div>
-        <div class="nav-actions">
-            <a class="nav-link" href="{{ route('carrito.show') }}">
-                <i class="bi bi-cart fs-4 text-dark"></i>
-            </a>
-            <a class="nav-link boton" aria-current="page" href=" {{ route('register') }}">INICIAR SESION</a>
-        </div>
+            </div>
+            <div class="nav-actions">
+                @if(Auth::check())
+                    @if(!Auth::user()->is_vendedor)
+                        <a class="nav-link" href="{{ route('carrito.show') }}">
+                            <i class="bi bi-cart fs-4 text-dark"></i>
+                        </a>
+                    @endif
+                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="btn btn-secondary">Cerrar Sesión</button>
+                </form>
+                @else
+                <a class="nav-link boton" aria-current="page" href="{{ route('register') }}">INICIAR SESION</a>
+                @endif
+            </div>
     </nav>
 
-    <div class="container-general">
+    <div class="content">
         @yield('content')
     </div>
 
@@ -66,5 +76,6 @@
         </div>
     </footer>
 </body>
+
 
 </html>
